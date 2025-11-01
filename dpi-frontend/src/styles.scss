@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #eff3f8;
+}
+
+.bordered-container {
+  border: solid 1px #E9ECED;
+  border-radius: 5px;
+}
+
+button#next{
+  width: auto;
+}
+
+button#previous{
+  width: auto;
+}
+
+button.auto-width {
+  width: auto !important;
+}
+
+/**
+* Loader CSS
+ */
+
+.hidden {
+  display: none;
+}
+
+.loader-overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1111111;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.align-text-start {
+  text-align: start !important;
+}

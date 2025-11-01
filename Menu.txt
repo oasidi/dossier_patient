@@ -1,0 +1,109 @@
+http://localhost:4200/assistant
+		http://localhost:4200/assistant/patients
+		http://localhost:4200/assistant/appointments
+
+http://localhost:4200/hospital
+		http://localhost:4200/hospital/general-information
+		http://localhost:4200/hospital/services
+		http://localhost:4200/hospital/parameters
+		
+
+
+http://localhost:4200/consultation
+		http://localhost:4200/consultation/today
+		
+	
+	sysinfomedical@gmail.com
+	Zayed.2020!
+	
+	
+	
+	MRT-22-000173-01 = visa maroc
+	
+	
+	<p-card header="Services médicaux">
+  <div class="flex flex-row-reverse flex-wrap mb-2">
+    <button
+      pButton
+      pRipple
+      icon="fas fa-clinic-medical"
+      type="button"
+      label="Nouveau service"
+      class=" p-button-success auto-width"
+      (click)="createService()"
+    ></button>
+    <p-button label="New" icon="pi pi-plus" (click)="createService()"></p-button>
+  </div>
+  <div>
+    <p-table
+      [sortMode]="sortMode"
+      [value]="medicalServices"
+      [paginator]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      styleClass="p-datatable-striped p-datatable-gridlines"
+      responsiveLayout="scroll"
+      selectionMode="single"
+      dataKey="id"
+      [(selection)]="selectedService"
+      currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} lignes"
+      [rowsPerPageOptions]="[10,25,50]"
+      (onRowSelect)="onServiceSelect()"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th [pSortableColumn]="'name'">Nom
+            <p-sortIcon [field]="'name'"></p-sortIcon>
+          </th>
+          <th>Description
+
+          </th>
+          <th>Chef du service</th>
+          <th>Photo</th>
+          <th>Numero de telephone</th>
+          <th>Facturation</th>
+          <th>Hospitalisation</th>
+          <th>Actif</th>
+          <th><i class="fas fa-cogs"></i></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-medicalService>
+        <tr [pSelectableRow]="medicalService">
+          <td>{{medicalService.name}}</td>
+          <td>{{medicalService.description}}</td>
+          <td>{{medicalService.director}}</td>
+          <td>{{medicalService.logo}}</td>
+          <td>{{medicalService.phoneNumber}}</td>
+          <td>
+            <p-badge
+              [value]="medicalService.billable ? 'Oui' : 'Non'"
+              [severity]="medicalService.billable ? 'success' : 'warning'"
+            ></p-badge>
+          </td>
+          <td>
+            <p-badge
+              [value]="medicalService.canHospitalize ? 'Oui' : 'Non'"
+              [severity]="medicalService.canHospitalize ? 'success' : 'warning'"
+            ></p-badge>
+          </td>
+          <td>
+            <p-badge
+              [value]="medicalService.active ? 'Oui' : 'Non'"
+              [severity]="medicalService.active ? 'success' : 'warning'"
+            ></p-badge>
+          </td>
+          <td>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="fas fa-trash"
+              class="p-button-rounded p-button-text p-button-danger"
+              (click)="delete(medicalService.id)"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</p-card>

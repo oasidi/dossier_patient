@@ -1,0 +1,137 @@
+<p-card header="Rechercher un patient">
+  <div class="bordered-container p-2 pt-4">
+    <div class="p-fluid grid">
+
+      <div class="field col-12">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-qrcode"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              pInputText
+              id="nni"
+              type="text"
+              [(ngModel)]="searchCriteria.nationalId"
+            >
+            <label for="nni">NNI</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              pInputText
+              id="firstname"
+              type="text"
+              [(ngModel)]="searchCriteria.firstName"
+            >
+            <label for="firstname">Prenom</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              pInputText
+              id="middlename"
+              type="text"
+              [(ngModel)]="searchCriteria.middleName"
+            >
+            <label for="middlename">Prenom du pere</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              pInputText
+              id="lastname"
+              type="text"
+              [(ngModel)]="searchCriteria.lastname"
+            >
+            <label for="lastname">Nom de famille</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-phone"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              pInputText
+              id="phoneNumber"
+              type="text"
+              [(ngModel)]="searchCriteria.phoneNumber"
+            >
+            <label for="phoneNumber">Numero de telephone</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-calendar"></i>
+        </span>
+          <span class="p-float-label">
+            <p-calendar
+              id="birthdate"
+              [(ngModel)]="searchCriteria.birthdate"
+            ></p-calendar>
+            <label for="birthdate">Date de naissance</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+            <p-dropdown
+              id="sexe"
+              [autoDisplayFirst]="true"
+              [options]="sexe"
+
+            ></p-dropdown>
+            <label for="sexe">Sexe</label>
+        </span>
+      </div>
+    </div>
+    <div class="flex flex-row-reverse flex-wrap">
+      <button
+        pButton
+        pRipple
+        icon="pi pi-filter"
+        type="button"
+        label="Rechercher"
+        class=" auto-width"
+        (click)="searchPatients()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-refresh"
+        type="button"
+        label="Initialiser"
+        class=" p-button-danger mr-2 auto-width"
+        (click)="resetSearch()"
+      ></button>
+    </div>
+  </div>
+</p-card>
+<app-search-result
+  *ngIf="showSearchResult"
+  [patients]="patients"
+>
+</app-search-result>

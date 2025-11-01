@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/dpi_db
+    username: postgres
+    password: admin
+
+  # Start JPA / Hibernate properties
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  # End JPA / Hibernate properties
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    baseline-description: "init"
+    baseline-version: 0
+    #user: ${spring.datasource.username}
+    #password: ${spring.datasource.password}
+
+keycloak:
+  realm: sysinfo-med
+  auth-server-url: http://localhost:9090/auth/
+  ssl-required: external
+  resource: sysinfo-med-api
+  public-client: true
+  bearer-only: true
+

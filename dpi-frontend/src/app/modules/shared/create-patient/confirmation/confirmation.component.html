@@ -1,0 +1,229 @@
+<p-card header="Apreçu et confirmation">
+  <div class="flex justify-content-between flex-wrap">
+    <button
+      pButton
+      pRipple
+      icon="pi pi-angle-left"
+      iconPos="left"
+      type="button"
+      label="Precedent"
+      class="auto-width"
+      (click)="prevPage()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      icon="pi pi-save"
+      iconPos="left"
+      type="button"
+      label="Terminer"
+      class="p-button-success auto-width"
+      (click)="save()"
+    ></button>
+  </div>
+  <div class="p-fluid grid mt-2">
+    <div class="field col-12 md:col-4">
+      <p-card header="Informations civiles" [styleClass]="'equal-height'">
+        <div class="field grid">
+          <label class="col-fixed fixed-width">NNI</label>
+          <div class="col">
+            <label class="col-fixed">{{patient?.nationalId}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Prenom</label>
+          <div class="col">
+            <label class="col-fixed">{{patient?.firstName}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Prenom du pere</label>
+          <div class="col">
+            <label class="col-fixed">{{patient?.middleName}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Nom de famille</label>
+          <div class="col">
+            <label class="col-fixed">{{patient?.lastname}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Date de naissance</label>
+          <div class="col">
+            <label class="col-fixed">{{patient?.birthdate | date:'dd/MM/yyyy'}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Lieu de naissance</label>
+          <div class="col">
+            <label class="col-fixed">{{patient?.birthPlace}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Sexe</label>
+          <div class="col">
+            <label class="col-fixed">{{patient?.sexe}}</label>
+          </div>
+        </div>
+      </p-card>
+    </div>
+    <div class="field col-12 md:col-4">
+      <p-card header="Contact" [styleClass]="'equal-height'">
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Numero de telephone</label>
+          <div class="col">
+            <label class="col-fixed">{{patient?.phoneNumber}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Email</label>
+          <div class="col">
+            <label class="col-fixed">{{patient?.email}}</label>
+          </div>
+        </div>
+          <p-divider></p-divider>
+          <h5>Personne de contact</h5>
+          <div class="field grid">
+            <label class="col-fixed fixed-width">Prenom</label>
+            <div class="col">
+              <label class="col-fixed">{{contactPerson?.firstname}}</label>
+            </div>
+          </div>
+          <div class="field grid">
+            <label class="col-fixed fixed-width">Nom de famille</label>
+            <div class="col">
+              <label class="col-fixed">{{contactPerson?.lastname}}</label>
+            </div>
+          </div>
+          <div class="field grid">
+            <label class="col-fixed fixed-width">Numero de telephone</label>
+            <div class="col">
+              <label class="col-fixed">{{contactPerson?.phoneNumber}}</label>
+            </div>
+          </div>
+      </p-card>
+    </div>
+    <div class="field col-12 md:col-4">
+      <p-card header="Adresse" [styleClass]="'equal-height'">
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Cartier</label>
+          <div class="col">
+            <label class="col-fixed">{{address?.street}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">N° du maison</label>
+          <div class="col">
+            <label class="col-fixed">{{address?.street}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Pays</label>
+          <div class="col">
+            <label class="col-fixed">{{address?.country}}</label>
+          </div>
+        </div>
+        <div class="field grid">
+          <label class="col-fixed fixed-width">Code postale</label>
+          <div class="col">
+            <label class="col-fixed">{{address?.postalCode}}</label>
+          </div>
+        </div>
+      </p-card>
+    </div>
+    <div class="field col-12">
+      <p-card header="Informations medicales">
+        <div class="p-fluid grid">
+          <div class="field col-12 md:col-4">
+            <p-card header="Constantes" [styleClass]="'equal-height-2'">
+              <div class="field grid" *ngFor="let constant of constants">
+                <label class="col-fixed fixed-width">{{constant.constantTypeLabel}}</label>
+                <div class="col">
+                  <label class="col-fixed">{{constant.value}}</label>
+                </div>
+              </div>
+            </p-card>
+          </div>
+          <div class="field col-12 md:col-4">
+            <p-card header="Allergies" [styleClass]="'equal-height-2'">
+              <div *ngFor="let allergy of allergies">
+                <div class="field grid">
+                  <label class="col-fixed fixed-width">Type</label>
+                  <div class="col">
+                    <label class="col-fixed">{{allergy.allergyTypeLabel}}</label>
+                  </div>
+                </div>
+                <div class="field grid">
+                  <label class="col-fixed fixed-width">Allergie</label>
+                  <div class="col">
+                    <label class="col-fixed">{{allergy.allergy}}</label>
+                  </div>
+                </div>
+                <div class="field grid">
+                  <label class="col-fixed fixed-width">Remarques</label>
+                  <div class="col">
+                    <label class="col-fixed">{{allergy.remarks}}</label>
+                  </div>
+                </div>
+                <div class="field grid">
+                  <label class="col-fixed fixed-width">Confidentiel</label>
+                  <div class="col">
+                    <label class="col-fixed">
+                      <p-badge
+                        [value]="allergy.confidential ? 'Oui' : 'Non'"
+                        [severity]="allergy.confidential ? 'warning' : 'success'"
+                      ></p-badge>
+                    </label>
+                  </div>
+                </div>
+                <p-divider></p-divider>
+              </div>
+            </p-card>
+          </div>
+          <div class="field col-12 md:col-4">
+            <p-card header="Antecedents" [styleClass]="'equal-height-2'">
+              <div *ngFor="let background of medicalBackgrounds">
+                <div class="field grid">
+                  <label class="col-fixed fixed-width">Type</label>
+                  <div class="col">
+                    <label class="col-fixed">{{background.medicalBackgroundTypeLabel}}</label>
+                  </div>
+                </div>
+                <div class="field grid">
+                  <label class="col-fixed fixed-width">Antecendent</label>
+                  <div class="col">
+                    <label class="col-fixed">{{background.background}}</label>
+                  </div>
+                </div>
+                <div class="field grid">
+                  <label class="col-fixed fixed-width">Periode</label>
+                  <div class="col">
+                    <label class="col-fixed">{{background.period}}</label>
+                  </div>
+                </div>
+                <div class="field grid">
+                  <label class="col-fixed fixed-width">Traitement</label>
+                  <div class="col">
+                    <label class="col-fixed">{{background.treatment}}</label>
+                  </div>
+                </div>
+                <div class="field grid">
+                  <label class="col-fixed fixed-width">Confidentiel</label>
+                  <div class="col">
+                    <label class="col-fixed">
+                      <p-badge
+                        [value]="background.confidential ? 'Oui' : 'Non'"
+                        [severity]="background.confidential ? 'warning' : 'success'"
+                      ></p-badge>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </p-card>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</p-card>

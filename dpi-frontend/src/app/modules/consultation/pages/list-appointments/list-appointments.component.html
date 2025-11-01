@@ -1,0 +1,57 @@
+<p-card header="Mes rendez-vous">
+  <p-table
+    (onRowSelect)="onAppointmentSelect()"
+    [(selection)]="selectedAppointment"
+    [paginator]="true"
+    [rowsPerPageOptions]="[10,25,50]"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [value]="appointments"
+    currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} lignes"
+    dataKey="id"
+    responsiveLayout="scroll"
+    selectionMode="single"
+    styleClass="p-datatable-striped"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>&nbsp;</th>
+        <th>Patient</th>
+        <th>Service</th>
+        <th>Cas medical</th>
+        <th>Heure de la consultation</th>
+        <th>&nbsp;</th>
+      </tr>
+    </ng-template>
+    <ng-template let-appointment pTemplate="body">
+      <tr [pSelectableRow]="appointment">
+        <td class="text-center">
+          <em [class.fa-male]="appointment.sexe === 'MALE'"
+              [ngStyle]="{color:'var(--blue-500)'}"
+              class="fas "
+              style="font-size: 3em;"
+          ></em>
+          <em [class.fa-female]="appointment.sexe === 'FEMALE'"
+              [ngStyle]="{color:'var(--pink-500)'}"
+              class="fas "
+              style="font-size: 3em;"
+          ></em>
+        </td>
+        <td>{{appointment.patientFirstname}} {{appointment.patientLastname}}</td>
+        <td>{{appointment.medicalServiceName}}</td>
+        <td>{{appointment.medicalCaseTitle}}</td>
+        <td>{{appointment.startTime | hour}} - {{appointment.endTime | hour}}</td>
+        <td style="width: 100px;">
+          <button
+            (click)="consultationDetails(appointment.appointmentId, appointment.patientId)"
+            class="p-button-outlined p-button-success text-left"
+            icon="fas fa-diagnoses"
+            label="Demarrer"
+            pButton
+          >
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

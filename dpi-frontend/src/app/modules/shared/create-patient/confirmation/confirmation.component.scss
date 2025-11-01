@@ -1,0 +1,15 @@
+:host ::ng-deep {
+  p-card .equal-height {
+    min-height: 410px !important;
+  }
+
+  p-card .equal-height-2 {
+    min-height: 480px !important;
+  }
+}
+.fixed-width {
+  width: 200px;
+}
+.equal-height {
+}
+

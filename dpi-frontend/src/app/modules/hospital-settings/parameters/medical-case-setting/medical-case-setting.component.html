@@ -1,0 +1,106 @@
+<div class="mb-2" *ngIf="editMode">
+  <div class="flex flex-row">
+    <div class="field col-6">
+    <span class="p-float-label">
+        <input
+          [(ngModel)]="selectedMedicalCase.title"
+          id="constantName"
+          pInputText
+          type="text"
+        >
+        <label for="constantName">Titre</label>
+    </span>
+    </div>
+    <div class="field col-6">
+    <span class="p-float-label">
+        <input
+          [(ngModel)]="selectedMedicalCase.description"
+          id="constantUnit"
+          pInputText
+          type="text"
+        >
+        <label for="constantUnit">Description</label>
+    </span>
+    </div>
+  </div>
+  <p-divider></p-divider>
+  <div class="flex justify-content-end">
+    <button
+      (click)="cancel()"
+      class="p-button-danger p-button-outlined auto-width mr-2"
+      icon="fas fa-times"
+      label="Annuler"
+      pButton
+    >
+    </button>
+    <button
+      (click)="save()"
+      class="auto-width"
+      icon="fas fa-save"
+      label="Enregister"
+      pButton
+    >
+    </button>
+  </div>
+</div>
+<div class="flex justify-content-end" *ngIf="!editMode">
+  <button
+    (click)="newEntry()"
+    class="p-button-success auto-width"
+    icon="fas fa-plus"
+    label="Nouvelle entrée"
+    pButton
+  >
+  </button>
+</div>
+<p-divider></p-divider>
+<div class="p-fluid grid">
+  <div class="sm:col-12 md:col-12 lg:col-12">
+    <p-table
+      (onRowSelect)="onSelect($event)"
+      [(selection)]="selectedMedicalCase"
+      [paginator]="true"
+      [rowsPerPageOptions]="[10,20,25,30]"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [value]="medicalCases"
+      currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} lignes"
+      dataKey="id"
+      responsiveLayout="scroll"
+      selectionMode="single"
+      styleClass="p-datatable-striped p-datatable-gridlines"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Constante</th>
+          <th>Unité</th>
+          <th>&nbsp;</th>
+        </tr>
+      </ng-template>
+      <ng-template let-medicalCase pTemplate="body">
+        <tr [pSelectableRow]="medicalCase">
+          <td>{{medicalCase.title}}</td>
+          <td>{{medicalCase.description}}</td>
+          <td>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="fas fa-edit"
+              class="p-button-rounded p-button-text mr-2"
+              (click)="edit(medicalCase)"
+            ></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="fas fa-trash"
+              class="p-button-rounded p-button-text p-button-danger"
+              (click)="delete(medicalCase.id)"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

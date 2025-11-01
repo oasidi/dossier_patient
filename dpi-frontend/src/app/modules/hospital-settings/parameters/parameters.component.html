@@ -1,0 +1,42 @@
+<p-card header="Paramétrages">
+  <div class="bordered-container p-2 pt-4">
+    <p-tabView (onChange)="tabChange($event)">
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="fas fa-weight"></i>
+          <span>&nbsp;Constantes</span>
+        </ng-template>
+        <app-constants-setting
+        [constants]="constantTypes"
+        ></app-constants-setting>
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="fas fa-allergies"></i>
+          <span>&nbsp;Allergies</span>
+        </ng-template>
+        <app-allergie-setting
+          [allergyTypes]="allergyTypes"
+        ></app-allergie-setting>
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="fas fa-bacteria"></i>
+          <span>&nbsp;Antecedents</span>
+        </ng-template>
+        <app-medical-background-setting
+          [medicalBackgroundTypes]="medicalBackgroundTypes"
+        ></app-medical-background-setting>
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="fas fa-notes-medical"></i>
+          <span>&nbsp;Cas médicaux</span>
+        </ng-template>
+        <app-medical-case-setting
+        [medicalCases]="medicalCaseTypes"
+        ></app-medical-case-setting>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</p-card>

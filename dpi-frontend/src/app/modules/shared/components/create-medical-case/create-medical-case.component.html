@@ -1,0 +1,70 @@
+<div class="p-fluid mt-2">
+  <div class="col-12">
+    <div class="field col-12">
+      <span class="p-float-label">
+          <p-dropdown
+            [(ngModel)]="selectedMedicalCaseType"
+            [autoDisplayFirst]="false"
+            [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('medicalCaseTypeId')}"
+            [options]="medicalCaseTypes"
+            id="medicalCaseType"
+            optionLabel="title"
+          ></p-dropdown>
+          <label for="medicalCaseType">Type de cas</label>
+      </span>
+      <small *ngIf="errorKeys.includes('medicalCaseTypeId')" class="p-error">{{errorMessages['medicalCaseTypeId']}}</small>
+    </div>
+    <div class="field col-12">
+      <span class="p-float-label">
+          <input
+            [(ngModel)]="medicalCase.title"
+            id="allergy"
+            pInputText
+            type="text"
+          >
+          <label for="allergy">Motif</label>
+      </span>
+    </div>
+    <div class="field col-12">
+      <span class="p-float-label">
+        <textarea
+          [(ngModel)]="medicalCase.description"
+          id="remarks"
+          pInputTextarea
+          rows="3"
+        ></textarea>
+          <label for="remarks">Description</label>
+      </span>
+    </div>
+    <div class="field col-12">
+      <span class="p-float-label">
+        <textarea
+          [(ngModel)]="medicalCase.comment"
+          id="comment"
+          pInputTextarea
+          rows="3"
+        ></textarea>
+          <label for="remarks">Commentaire</label>
+      </span>
+    </div>
+    <p-divider></p-divider>
+    <div class="col-12 flex justify-content-end">
+      <button
+        (click)="onCancel()"
+        class="auto-width p-button-danger mr-2"
+        icon="fas fa-times"
+        label="Annuler"
+        pButton
+      >
+      </button>
+      <button
+        (click)="onSave()"
+        class="auto-width"
+        icon="fas fa-save"
+        label="Enregistrer"
+        pButton
+      >
+      </button>
+    </div>
+  </div>
+</div>

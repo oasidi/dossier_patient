@@ -1,0 +1,146 @@
+<p-card header="Informations du service">
+  <div class="bordered-container p-2 pt-4">
+    <div class="col-12 flex justify-content-start">
+      <div
+        class="col-2 md:col-2 flex align-items-center justify-content-center bordered-container">
+        <p-image
+          [preview]="true"
+          alt="profile"
+          src="assets/hospital.jpg"
+          width="150"
+        ></p-image>
+      </div>
+      <div class="flex justify-content-start flex-column">
+        <button
+          class="p-button-text align-text-start"
+          icon="far fa-images"
+          label="Changer le logo"
+          pButton
+          pRipple
+          type="button"
+        ></button>
+      </div>
+    </div>
+    <p-divider></p-divider>
+    <div class="p-fluid grid mt-2">
+      <div class="field col-12 md:col-6">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+              <i class="fas fa-hospital"></i>
+          </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="medicalServiceDto.name"
+              id="name"
+              pInputText
+              type="text"
+            >
+            <label for="name">Nom</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-6">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+              <i class="fas fa-code"></i>
+          </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="medicalServiceDto.code"
+              id="code"
+              pInputText
+              type="text"
+            >
+            <label for="name">Code</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-6">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="fas fa-key"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="medicalServiceDto.description"
+              id="description"
+              pInputText
+              type="text"
+            >
+            <label for="description">Description</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-6">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="medicalServiceDto.director"
+              id="directorName"
+              pInputText
+              type="text"
+            >
+            <label for="directorName">Chef du service</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-12">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-phone"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="medicalServiceDto.phoneNumber"
+              id="phoneNumber"
+              pInputText
+              type="text"
+            >
+            <label for="phoneNumber">Numero de telephone</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <h5>Facturation</h5>
+        <p-inputSwitch
+          [(ngModel)]="medicalServiceDto.billable"
+        ></p-inputSwitch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <h5>Hospitalisation</h5>
+        <p-inputSwitch
+          [(ngModel)]="medicalServiceDto.canHospitalize"
+        ></p-inputSwitch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <h5>Actif</h5>
+        <p-inputSwitch
+          [(ngModel)]="medicalServiceDto.active"
+        ></p-inputSwitch>
+      </div>
+    </div>
+    <div class="flex flex-row-reverse flex-wrap">
+      <button
+        (click)="save()"
+        class=" auto-width"
+        icon="fas fa-save"
+        label="Enregistrer"
+        pButton
+        pRipple
+        type="button"
+      ></button>
+      <button
+        (click)="cancel()"
+        class=" auto-width p-button-danger p-button-outlined mr-2"
+        icon="fas fa-times"
+        label="Annuler"
+        pButton
+        pRipple
+        type="button"
+      ></button>
+    </div>
+  </div>
+</p-card>

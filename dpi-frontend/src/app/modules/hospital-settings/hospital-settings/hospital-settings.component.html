@@ -1,0 +1,182 @@
+<p-card header="Informations de l'hopital">
+  <div class="bordered-container p-2 pt-4">
+    <div class="col-12 flex justify-content-start">
+      <div
+        class="col-2 md:col-2 flex align-items-center justify-content-center bordered-container">
+        <p-image
+          [preview]="true"
+          alt="profile"
+          src="assets/hospital.jpg"
+          width="150"
+        ></p-image>
+      </div>
+      <div
+        *ngIf="readOnly"
+        class="flex justify-content-start flex-column"
+      >
+        <button
+          (click)="readOnly = false"
+          class="p-button-text align-text-start"
+          icon="fas fa-edit"
+          label="Modifier les informations"
+          pButton
+          pRipple
+          type="button"
+        ></button>
+        <button
+          class="p-button-text align-text-start"
+          icon="far fa-images"
+          label="Changer le logo"
+          pButton
+          pRipple
+          type="button"
+        ></button>
+      </div>
+    </div>
+    <p-divider></p-divider>
+    <div class="p-fluid grid mt-2">
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="fas fa-hospital"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="hospitalDto.name"
+              [disabled]="readOnly"
+              id="name"
+              pInputText
+              type="text"
+            >
+            <label for="name">Nom</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="fas fa-key"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [disabled]="readOnly"
+              [(ngModel)]="hospitalDto.status"
+              id="status"
+              pInputText
+              type="text"
+            >
+            <label for="status">Statut</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="hospitalDto.directorName"
+              [disabled]="readOnly"
+              id="directorName"
+              pInputText
+              type="text"
+            >
+            <label for="directorName">Directeur general</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="fas fa-at"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="hospitalDto.email"
+              [disabled]="readOnly"
+              id="email"
+              pInputText
+              type="text"
+            >
+            <label for="email">Email</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-phone"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="hospitalDto.phoneNumber"
+              [disabled]="readOnly"
+              id="phoneNumber"
+              pInputText
+              type="text"
+            >
+            <label for="phoneNumber">Numero de telephone</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="fab fa-internet-explorer"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="hospitalDto.webSiteUrl"
+              [disabled]="readOnly"
+              id="webSiteUrl"
+              pInputText
+              type="text"
+            >
+            <label for="webSiteUrl">Site web</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="fas fa-map-marker-alt"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="hospitalDto.locality"
+              [disabled]="readOnly"
+              id="locality"
+              pInputText
+              type="text"
+            >
+            <label for="locality">Adresse</label>
+        </span>
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="!readOnly"
+      class="flex flex-row-reverse flex-wrap"
+    >
+      <button
+        (click)="saveChanges()"
+        class=" auto-width"
+        icon="fas fa-save"
+        label="Enregistrer"
+        pButton
+        pRipple
+        type="button"
+      ></button>
+      <button
+        (click)="cancel()"
+        class=" auto-width p-button-danger p-button-outlined mr-2"
+        icon="fas fa-times"
+        label="Annuler"
+        pButton
+        pRipple
+        type="button"
+      ></button>
+    </div>
+  </div>
+</p-card>

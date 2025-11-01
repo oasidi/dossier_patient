@@ -1,0 +1,96 @@
+<p-card header="Adresse">
+
+  <div class="flex justify-content-between flex-wrap">
+    <button
+      (click)="prevPage()"
+      class="auto-width"
+      icon="pi pi-angle-left"
+      iconPos="left"
+      label="Precedent"
+      pButton
+      pRipple
+      type="button"
+    ></button>
+    <button
+      (click)="nextPage()"
+      class="auto-width"
+      icon="pi pi-angle-right"
+      iconPos="right"
+      label="Suivant"
+      pButton
+      pRipple
+      type="button"
+    ></button>
+  </div>
+  <div class="bordered-container p-2 pt-4 mt-2">
+    <div class="p-fluid grid">
+      <div class="field col-12 lg:col-6 md:col-4">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+              <i class="pi pi-map"></i>
+          </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="address.street"
+              [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('street')}"
+              id="street"
+              pInputText
+              type="text"
+            >
+            <label for="street">Cartier</label>
+          </span>
+        </div>
+        <small *ngIf="errorKeys.includes('street')" class="p-error">{{errorMessages['street']}}</small>
+      </div>
+      <div class="field col-12 lg:col-6 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-hashtag"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="address.houseNumber"
+              id="houseNumber"
+              pInputText
+              type="text"
+            >
+            <label for="houseNumber">N° du maison</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 lg:col-6 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-globe"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="address.country"
+              id="pays"
+              pInputText
+              type="text"
+            >
+            <label for="pays">Pays</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 lg:col-6 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-globe"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="address.postalCode"
+              id="postalCode"
+              pInputText
+              type="text"
+            >
+            <label for="postalCode">Code postale</label>
+        </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</p-card>

@@ -1,0 +1,17 @@
+<div class="flex flex-row flex-wrap justify-content-start">
+  <div
+    (click)="selectTimeSlot(slot)"
+    *ngFor="let slot of slots"
+    [class.cursor-pointer]="!slot.appointmentId"
+    [class.disabled]="!slot.available"
+    [class.selected]="slot === selectedTimeSlot"
+    class="bordered-container col-2 text-center mr-2 mb-2 position-relative"
+  >
+    <h3>{{slot.start | hour }} - {{slot.end | hour}}</h3>
+    <span
+      (click)="onDelete(slot.appointmentId)"
+      *ngIf="slot.appointmentId && slot.patientId === patientId"
+      class="cursor-pointer position-fixed"
+    >X</span>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<p-card header="Motif du rendez-vous">
+  <div class="field col-12 flex flex-row">
+    <span class="p-float-label col-11 mr-1">
+      <p-dropdown
+        [(ngModel)]="selectedMedicalCase"
+        (onChange)="onChange()"
+        [autoDisplayFirst]="false"
+        [filter]="true"
+        [options]="medicalCases"
+        [showClear]="true"
+        filterBy="title"
+        id="medicalCase"
+        optionLabel="title"
+      ></p-dropdown>
+      <label for="medicalCase">Cas medical</label>
+    </span>
+    <button
+      (click)="newMedicalCase()"
+      pButton
+      pRipple
+      icon="fas fa-plus"
+      class="p-button-text"
+    ></button>
+  </div>
+  <div class="col-12" *ngIf="selectedMedicalCase !== undefined">
+    <div class="flex flex-row">
+      <div class="col-3">
+        <span>Titre</span>
+      </div>
+      <div class="col-9">
+        <span>{{selectedMedicalCase.title}}</span>
+      </div>
+    </div>
+    <div class="flex flex-row">
+      <div class="col-3">
+        <span>Description</span>
+      </div>
+      <div class="col-9">
+        <span>{{selectedMedicalCase.description}}</span>
+      </div>
+    </div>
+    <div class="flex flex-row">
+      <div class="col-3">
+        <span>Titre</span>
+      </div>
+      <div class="col-9">
+        <span>{{selectedMedicalCase.comment}}</span>
+      </div>
+    </div>
+  </div>
+</p-card>

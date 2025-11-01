@@ -1,0 +1,111 @@
+<p-card header="Nouveau rendez-vous">
+  <div class="flex flex-row">
+    <div class="col-12 lg:col-3 md:col-2 bordered-container mr-1">
+      <div class="field col-12 mt-2">
+        <span class="p-float-label">
+          <p-dropdown
+            (onChange)="reset()"
+            [(ngModel)]="checkAppointmentDto.serviceId"
+            [autoDisplayFirst]="true"
+            [options]="services"
+            id="service"
+            optionLabel="name"
+            optionValue="id"
+          ></p-dropdown>
+          <label for="service">Service</label>
+        </span>
+      </div>
+      <div class="field col-12" *ngIf="!selectPatientDisabled">
+        <span class="p-float-label">
+          <p-dropdown
+            (onChange)="reset()"
+            [(ngModel)]="checkAppointmentDto.patientId"
+            [autoDisplayFirst]="true"
+            [filter]="true"
+            [options]="patients"
+            [showClear]="true"
+            filterBy="firstName"
+            id="patient"
+            optionLabel="firstName"
+            optionValue="id"
+          ></p-dropdown>
+          <label for="patient">Patient</label>
+        </span>
+      </div>
+      <div class="field col-12" *ngIf="selectPatientDisabled">
+        <span class="font-bold">
+          {{ selectedPatient?.firstName }}
+        </span>
+      </div>
+      <div class="field col-12">
+      <span class="p-float-label">
+        <p-calendar
+          (onSelect)="reset()"
+          [(ngModel)]="checkAppointmentDto.date"
+          [minDate]="minDate"
+          dateFormat="dd/mm/yy"
+          id="appointmentDate"
+        ></p-calendar>
+        <label for="appointmentDate">Date du rendez-vous</label>
+      </span>
+      </div>
+      <div *ngIf="selectedTimeSlot && createMedicalCase" class="field col-12">
+        <button
+          (click)="reset()"
+          class="p-button-link text-left m-0 p-0"
+          label="Reinitialiser"
+          pButton
+        ></button>
+      </div>
+      <div *ngIf="!selectedTimeSlot && !createMedicalCase" class="field col-12">
+        <button
+          (click)="checkBooking()"
+          class="text-center"
+          label="Verifier"
+          pButton
+        ></button>
+      </div>
+      <div *ngIf="selectedTimeSlot && !selectedMedicalCase" class="field col-12">
+        <button
+          (click)="continueBooking()"
+          class="text-center"
+          label="Continuer"
+          pButton
+        ></button>
+      </div>
+      <div *ngIf="selectedMedicalCase" class="field col-12">
+        <button
+          (click)="saveBooking()"
+          class="text-center"
+          label="Enregistrer"
+          pButton
+        ></button>
+      </div>
+    </div>
+    <div
+      *ngIf="timeSlots.length > 0"
+      class="col-12 lg:col-9 md:col-10 bordered-container"
+    >
+      <app-time-slots
+        (deleteTimeSlot)="onDeleteTimeSlot($event)"
+        (timeSlotSelected)="onTimeSlotSelected($event)"
+        *ngIf="!createMedicalCase"
+        [slots]="timeSlots"
+        [patientId]="checkAppointmentDto.patientId"
+      ></app-time-slots>
+      <app-booking
+        (medicalCaseSelected)="onMedicalCaseSelect($event)"
+        *ngIf="createMedicalCase"
+        [patientId]="checkAppointmentDto.patientId"
+      ></app-booking>
+    </div>
+    <div
+      *ngIf="timeSlots.length === 0"
+      class="col-12 lg:col-9 md:col-10 bordered-container flex justify-content-center align-items-center"
+    >
+      <span class="info-msg">
+        Choisir les filtres et cliquez sur 'Verifier' pour afficher les rendez-vous
+      </span>
+    </div>
+  </div>
+</p-card>

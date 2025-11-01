@@ -1,0 +1,95 @@
+<div>
+  <h5>Chercher</h5>
+  <span class="p-fluid">
+    <p-autoComplete
+      (completeMethod)="filter($event)"
+      [(ngModel)]="selectedMedication"
+      [multiple]="true"
+      [suggestions]="filteredMedication"
+      field="name"
+    >
+    </p-autoComplete>
+  </span>
+</div>
+<div class="flex justify-content-between align-items-center">
+  <div class="flex flex-row col-8">
+    <div class="field col-12 md:col-2">
+      <label for="matin">Matin</label>
+      <p-inputNumber [showButtons]="true" id="matin">
+      </p-inputNumber>
+    </div>
+    <div class="field col-12 md:col-2">
+      <label for="aprem">Apres-midi</label>
+      <p-inputNumber [showButtons]="true" id="aprem">
+      </p-inputNumber>
+    </div>
+    <div class="field col-12 md:col-2">
+      <label for="soir">Soir</label>
+      <p-inputNumber [showButtons]="true" id="soir">
+      </p-inputNumber>
+    </div>
+  </div>
+  <div class="col-4">
+    <button
+      pButton
+      label="Ajouter"
+      icon="fas fa-plus"
+
+    ></button>
+  </div>
+</div>
+<p-divider></p-divider>
+<div class="sm:col-12 md:col-12 lg:col-12 xl:col-12">
+  <p-table
+    (onRowSelect)="onPrescriptionSelect($event)"
+    [(selection)]="selectedPrescription"
+    [paginator]="true"
+    [rowsPerPageOptions]="[5,10,25,50]"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [value]="medicationPrescription"
+    currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} lignes"
+    dataKey="id"
+    responsiveLayout="scroll"
+    selectionMode="single"
+    styleClass="p-datatable-striped p-datatable-gridlines"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Type</th>
+        <th>Allergie</th>
+        <th>Remarques</th>
+        <th>Confidentiel</th>
+        <th><i class="fas fa-cogs"></i></th>
+      </tr>
+    </ng-template>
+    <ng-template let-prescription pTemplate="body">
+      <tr [pSelectableRow]="prescription">
+        <td>{{prescription.allergyTypeLabel}}</td>
+        <td>{{prescription.allergy}}</td>
+        <td>{{prescription.remarks}}</td>
+        <td>
+          <p-badge [severity]="prescription.confidential ? 'warning' : 'success'" [value]="prescription.confidential ? 'Oui' : 'Non'"></p-badge>
+        </td>
+        <td>
+          <button
+            (click)="edit(prescription)"
+            class="p-button-rounded p-button-text mr-2"
+            icon="fas fa-edit"
+            pButton
+            pRipple
+            type="button"
+          ></button>
+          <button
+            (click)="delete(prescription.id)"
+            class="p-button-rounded p-button-text p-button-danger"
+            icon="fas fa-trash"
+            pButton
+            pRipple
+            type="button"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

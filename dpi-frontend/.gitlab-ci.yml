@@ -1,0 +1,29 @@
+variables:
+  FRONTEND_IMAGE_TAG: dpi-frontend
+stages:
+  - npm
+  - docker
+
+npm-build-job:
+    image: node:latest
+    stage: npm
+    script:
+        - npm cache clean --force
+        - npm install 
+        - npm run build --prod
+    artifacts:
+      paths:
+        - "dist/"
+
+docker-build-job:
+    image: gitlab/dind
+    services:
+    - docker:dind 
+    stage: docker
+    before_script:
+        - echo "Docker Registry - $CI_REGISTRY"
+        - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    script:
+        - docker build -t "$CI_REGISTRY_IMAGE":$FRONTEND_IMAGE_TAG .
+        - echo "Docker registry image -- $CI_REGISTRY_IMAGE"
+        - docker push "$CI_REGISTRY_IMAGE"

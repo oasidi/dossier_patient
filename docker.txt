@@ -1,0 +1,32 @@
+docker run -it --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -v C:/0-sidi/Dossier-Patient/dist/docker_volume/keycloak:/opt/jboss/keycloak/standalone/data -p 9090:8080 jboss/keycloak
+
+docker run -it --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -v C:/0-SaveCometBK/SwitchDrive/Dossier-Patient/dist2/docker_volume/keycloak:/opt/jboss/keycloak/standalone/data -p 9090:8080 jboss/keycloak
+
+
+docker start keycloak
+docker ps
+
+http://localhost:9090
+
+***********************************
+
+http://41.138.134.185:9080/mederp/authentification/auth
+
+admin/admin.2022!
+
+directeur/Zayed.2022!
+
+testlabo/testlabo
+
+testmedecin/testmedecin
+
+
+
+
+https://ccism.ch/kaizen2022/
+oasidi@bluewin.ch/Sidi.5691!
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">

@@ -1,0 +1,211 @@
+          <table  styleClass="p-datatable-striped" class="table table-striped table-fit table-bordered table-hover">
+            <thead class="bg-primary-500" style="color: #eff3f8">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="mb-2">
+              <tr *ngFor="let consttype of constList ">
+                <td class="col-0"> {{consttype.id}} </td>
+                <td class="col-3"> {{consttype.constantName}} </td>
+                <td class="col-4"> {{consttype.constantUnit}} </td>
+                <span>
+                  <td class="col-2"> <button class="auto-width"  label="Modifier" pButton pRipple type="button"
+                            (click)="editConstante(consttype)"></button></td>
+                  <td> <button class=" mx-1 auto-width p-button-danger p-button-outlined mr-2" icon="fas fa-times"
+                            label="Delete" pButton pRipple type="button" (click)="editConstante(consttype)"></button></td>
+
+                  </span>
+              </tr>
+            </tbody>
+          </table>
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  <p-accordion>
+  <p-accordionTab header="Constantes" [selected]="true">
+
+    <p-card header="Liste des Constantes">
+      <div class="col-12 lg:col-8 md:col-2 bordered-container mr-1">
+        <p-button label="New" icon="pi pi-plus"  (click)="getConstantes()"></p-button>
+        <p-button (click)="getConstantes()" icon="pi pi-external-link" label="Lister"></p-button>
+        <button  (click)="getConstantes()" class="auto-width" icon="fas fa-save" label="Ajouter un Type" pButton pRipple type="button"></button>
+      </div>
+      <div class="col-12 lg:col-8 md:col-2 bordered-container mr-1">
+        <div class="field col-12 mt-2">
+
+          <p-table [value]="constList" styleClass="p-datatable-striped"
+                   [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]"
+                    [totalRecords]="totalRecords" [pageLinks]="3">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>id</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-constante>
+              <tr>
+                <td>{{constante.id}}</td>
+                <td>{{constante.constantUnit}}</td>
+                <td>{{constante.constantName}}</td>
+                <span>
+                  <td class="col-2"> <button class="auto-width"  label="Modifier" pButton pRipple type="button"
+                                             (click)="editConstante(constante)"></button></td>
+                  <td> <button class=" mx-1 auto-width p-button-danger p-button-outlined mr-2" icon="fas fa-times"
+                               label="Delete" pButton pRipple type="button" (click)="editConstante(constante)"></button></td>
+
+                  </span>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card header="Détail" #detail>
+        <div class="col-12 lg:col-8 md:col-5 bordered-container mr-2">
+        <form [formGroup]="TypeDetail">
+          <div class="mb-3">
+            <label hidden="true"> Identifiant  </label>
+            <input type="text" formControlName="objetID" hidden="true">
+          </div>
+          <div class="mb-3">
+            <label > ConstanteType  </label>
+            <input type="text" formControlName="objetType">
+          </div>
+          <div class="mb-3">
+            <label >Description </label>
+            <input type="text" formControlName="objetDesc">
+          </div>
+          <p-button label="Save" icon="pi pi-plus" (onClick)="addConstante()"></p-button>
+        </form>
+      </div>
+    </p-card>
+    </p-accordionTab>
+
+  <p-accordionTab header="Add constatnte" #detail2>
+    <p-card header="Détail">
+      <div class="bordered-container p-2 pt-5">
+        <form [formGroup]="TypeDetail2">
+          <div class="mb-3">
+            <label hidden="true"> Identifiant  </label>
+            <input type="text" formControlName="objetID" hidden="true">
+          </div>
+          <div class="mb-3">
+            <label > ConstanteType  </label>
+            <input type="text" formControlName="objetType">
+          </div>
+          <div class="mb-3">
+            <label >Description </label>
+            <input type="text" formControlName="objetDesc">
+          </div>
+        </form>
+        <p-button label="Save" icon="pi pi-plus" (onClick)="addConstante2()"></p-button>
+      </div>
+    </p-card>
+  </p-accordionTab>
+</p-accordion>
+
+
+
+
+
+<p-accordion>
+    <p-accordionTab header="Show Close event">
+      <p-tabView>
+        <p-tabPanel header="Header 1">
+          Content 1
+        </p-tabPanel>
+        <p-tabPanel header="Header 2">
+          Content 2
+        </p-tabPanel>
+        <p-tabPanel header="Header 3">
+          Content 3
+        </p-tabPanel>
+      </p-tabView>
+
+      <div class="timeselector">
+        <p-overlayPanel class="timeselector-overlay" #op>
+          <div class="timeselector-panel">
+            <p>Time selector</p>
+            <br />
+            <div>
+              <button (click)="op.hide()">
+                Cancel
+              </button>
+              <button>
+                Apply
+              </button>
+            </div>
+            <br />
+            <br />
+          </div>
+        </p-overlayPanel>
+      </div>
+
+      <p-toolbar>
+        <div class="p-toolbar-group-left">
+          <p-button label="New" icon="pi pi-plus"></p-button>
+          <p-button label="Upload" icon="pi pi-upload" styleClass="p-button-success"></p-button>
+          <p-splitButton label="Save" icon="pi pi-check"  styleClass="p-button-warning"></p-splitButton>
+        </div>
+
+        <div class="p-toolbar-group-right">
+          <p-button icon="pi pi-search"></p-button>
+          <p-button icon="pi pi-calendar" styleClass="p-button-success"></p-button>
+          <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
+        </div>
+      </p-toolbar>
+      <p-accordion>
+        <p-accordionTab header="Show Modal 2">
+          <h5>Responsive</h5>
+          <p-button (click)="showResponsiveDialog()" icon="pi pi-external-link" label="Show"></p-button>
+          <p-dialog header="Header" [(visible)]="displayResponsive" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+                    [draggable]="false" [resizable]="false">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <ng-template pTemplate="footer">
+              <p-button (click)="displayResponsive=false" label="No" styleClass="p-button-text"></p-button>
+              <p-button (click)="displayResponsive=false" label="Yes" styleClass="p-button-text"></p-button>
+            </ng-template>
+          </p-dialog>
+        </p-accordionTab>
+      </p-accordion>
+
+      <p-accordion>
+        <p-accordionTab header="Show Modal">
+          <p-fileUpload name="myfile[]" url="./upload.php"></p-fileUpload>
+          <p-dialog header="Title" [(visible)]="displayModal">
+            Content
+          </p-dialog>
+          <button pButton type="button" label="Show Modal" class="p-button-danger" (click)="showModalDialog()"></button>
+          <button pButton type="button" label="Click" (click)="handleClick($event)"></button>
+          <p-button label="Click" (onClick)="handleClick($event)"></p-button>
+        </p-accordionTab>
+      </p-accordion>
+      <p-accordion>
+        <p-accordionTab header="Style boutons">
+          <button pButton type="button" class="p-button-info"></button>
+          <button pButton type="button" label="Primary"></button>
+          <button pButton type="button" label="Secondary" class="p-button-secondary"></button>
+          <button pButton type="button" label="Success" class="p-button-success"></button>
+          <button pButton type="button" label="Info" class="p-button-info"></button>
+          <button pButton type="button" label="Warning" class="p-button-warning"></button>
+          <button pButton type="button" label="Help" class="p-button-help"></button>
+          <button pButton type="button" label="Danger" class="p-button-danger"></button>
+        </p-accordionTab>
+
+      </p-accordion>
+    </p-accordionTab>
+</p-accordion>

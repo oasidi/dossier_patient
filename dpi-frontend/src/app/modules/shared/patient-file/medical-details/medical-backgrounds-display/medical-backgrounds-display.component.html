@@ -1,0 +1,69 @@
+<div class="flex justify-content-end">
+  <button
+    (click)="newMedicalBackground()"
+    pButton
+    icon="fas fa-plus"
+    label="Nouvelle prise"
+    class="p-button-success auto-width"
+  >
+  </button>
+</div>
+<p-divider></p-divider>
+<div class="sm:col-12 md:col-12 lg:col-12 xl:col-12">
+  <p-table
+    [value]="medicalBackgrounds"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    styleClass="p-datatable-striped p-datatable-gridlines"
+    responsiveLayout="scroll"
+    selectionMode="single"
+    dataKey="id"
+    [(selection)]="selectedMedicalBackground"
+    currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} lignes"
+    [rowsPerPageOptions]="[5,10,25,50]"
+    (onRowSelect)="onMedicalBackgroundSelect($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Type</th>
+        <th>Antecedent</th>
+        <th>Periode</th>
+        <th>Traitement</th>
+        <th>Remarques</th>
+        <th>Confidentiel</th>
+        <th><i class="fas fa-cogs"></i></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-medicalBackground>
+      <tr [pSelectableRow]="medicalBackground">
+        <td>{{medicalBackground.medicalBackgroundTypeLabel}}</td>
+        <td>{{medicalBackground.background}}</td>
+        <td>{{medicalBackground.period}}</td>
+        <td>{{medicalBackground.treatment}}</td>
+        <td>{{medicalBackground.remarks}}</td>
+        <td>
+          <p-badge [value]="medicalBackground.confidential ? 'Oui' : 'Non'" [severity]="medicalBackground.confidential ? 'warning' : 'success'"></p-badge>
+        </td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="fas fa-edit"
+            class="p-button-rounded p-button-text mr-2"
+            (click)="edit(medicalBackground)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="fas fa-trash"
+            class="p-button-rounded p-button-text p-button-danger"
+            (click)="delete(medicalBackground.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -1,0 +1,26 @@
+.disabled {
+  background-color: #80808052;
+  color: #8080809c;
+}
+.selected {
+  background-color: #3a82f6;
+  color: white;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-fixed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 5px;
+  padding-top: 3px;
+  font-size: small;
+  &:hover {
+    color: #EF4444 !important;
+    font-weight: bold;
+    font-size: large;
+  }
+}

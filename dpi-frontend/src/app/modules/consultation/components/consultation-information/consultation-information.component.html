@@ -1,0 +1,51 @@
+<ng-container *ngIf="!readOnly">
+  <div class="flex flex-row justify-content-end">
+    <button
+      (click)="saveConsultationChanges()"
+      pButton
+      icon="fas fa-save"
+      label="Enregistrer les changements"
+      class="text-left auto-width"
+    ></button>
+  </div>
+  <p-divider></p-divider>
+</ng-container>
+
+<p-accordion>
+  <p-accordionTab header="Anamnèse">
+    <p *ngIf="readOnly; else anamnesis" [innerHTML]="consultation.anamnesis"></p>
+    <ng-template #anamnesis>
+      <p-editor [(ngModel)]="consultation.anamnesis" [style]="{'height':'320px'}"></p-editor>
+    </ng-template>
+  </p-accordionTab>
+  <p-accordionTab header="Examens Cliniques">
+    <p *ngIf="readOnly; else physicalExamination" [innerHTML]="consultation.physicalExamination"></p>
+    <ng-template #physicalExamination>
+      <p-editor [(ngModel)]="consultation.physicalExamination" [style]="{'height':'320px'}"></p-editor>
+    </ng-template>
+  </p-accordionTab>
+  <p-accordionTab header="Examens Complémentaires">
+    <p *ngIf="readOnly; else complementaryExamination" [innerHTML]="consultation.complementaryExamination"></p>
+    <ng-template #complementaryExamination>
+      <p-editor [(ngModel)]="consultation.complementaryExamination" [style]="{'height':'320px'}"></p-editor>
+    </ng-template>
+  </p-accordionTab>
+  <p-accordionTab header="Complément de Consultation">
+    <p *ngIf="readOnly; else furtherConsultation" [innerHTML]="consultation.furtherConsultation"></p>
+    <ng-template #furtherConsultation>
+      <p-editor [(ngModel)]="consultation.furtherConsultation" [style]="{'height':'320px'}"></p-editor>
+    </ng-template>
+  </p-accordionTab>
+  <p-accordionTab header="Diagnostic Différentiel">
+    <p *ngIf="readOnly; else differentialDiagnosis" [innerHTML]="consultation.differentialDiagnosis"></p>
+    <ng-template #differentialDiagnosis>
+      <p-editor [(ngModel)]="consultation.differentialDiagnosis" [style]="{'height':'320px'}"></p-editor>
+    </ng-template>
+  </p-accordionTab>
+  <p-accordionTab header="Proposition">
+    <p *ngIf="readOnly; else proposition" [innerHTML]="consultation.proposition"></p>
+    <ng-template #proposition>
+      <p-editor [(ngModel)]="consultation.proposition" [style]="{'height':'320px'}"></p-editor>
+    </ng-template>
+  </p-accordionTab>
+</p-accordion>

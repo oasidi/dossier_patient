@@ -1,0 +1,153 @@
+<p-card header="Informations medicales">
+
+  <div class="flex justify-content-between flex-wrap">
+    <button
+      pButton
+      pRipple
+      icon="pi pi-angle-left"
+      iconPos="left"
+      type="button"
+      label="Precedent"
+      class="auto-width"
+      (click)="prevPage()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      icon="pi pi-angle-right"
+      iconPos="right"
+      type="button"
+      label="Suivant"
+      class="auto-width"
+      (click)="nextPage()"
+    ></button>
+  </div>
+  <div class="bordered-container p-2 pt-4 mt-2">
+    <p-tabView>
+      <p-tabPanel header="Constantes">
+        <app-create-constant
+          (save)="onConstantsSave($event)"
+        ></app-create-constant>
+      </p-tabPanel>
+      <p-tabPanel header="Allergies">
+        <div class="p-fluid grid">
+          <div class="col-6">
+            <app-create-allergy
+              (save)="onAllergySave($event)"
+            ></app-create-allergy>
+          </div>
+
+          <div class="col-6">
+            <p-table
+              [value]="allergies"
+              [paginator]="true"
+              [rows]="5"
+              [showCurrentPageReport]="true"
+              styleClass="p-datatable-striped p-datatable-gridlines"
+              responsiveLayout="scroll"
+              selectionMode="single"
+              dataKey="id"
+              [rowsPerPageOptions]="[5,10,25,50]"
+            >
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Type</th>
+                  <th>Allergie</th>
+                  <th>Remarques</th>
+                  <th>Confidentiel</th>
+                  <th>
+                    <i class="fas fa-cogs"></i>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-allergy>
+                <tr [pSelectableRow]="allergy">
+                  <td>{{allergy.allergyTypeLabel}}</td>
+                  <td>{{allergy.allergy}}</td>
+                  <td>{{allergy.remarks}}</td>
+                  <td>
+                    <p-badge
+                      [value]="allergy.confidential ? 'Oui' : 'Non'"
+                      [severity]="allergy.confidential ? 'warning' : 'success'"
+                    ></p-badge>
+                  </td>
+                  <td>
+                    <button
+                      pButton
+                      pRipple
+                      type="button"
+                      icon="fas fa-trash"
+                      class="p-button-rounded p-button-text p-button-danger"
+                      (click)="delete(allergy)"
+                    ></button>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="Antecedents">
+        <div class="p-fluid grid">
+          <div class="col-4">
+            <app-create-medical-background
+              (save)="onMedicalBackgroundSave($event)"
+            ></app-create-medical-background>
+          </div>
+          <div class="col-8">
+            <p-table
+              [value]="medicalBackgrounds"
+              [paginator]="true"
+              [rows]="5"
+              [showCurrentPageReport]="true"
+              styleClass="p-datatable-striped p-datatable-gridlines"
+              responsiveLayout="scroll"
+              selectionMode="single"
+              dataKey="id"
+              [rowsPerPageOptions]="[5,10,25,50]"
+            >
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Type</th>
+                  <th>Antecedent</th>
+                  <th>Periode</th>
+                  <th>Traitement</th>
+                  <th>Remarques</th>
+                  <th>Confidentiel</th>
+                  <th>
+                    <i class="fas fa-cogs"></i>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-medicalBackground>
+                <tr [pSelectableRow]="medicalBackground">
+                  <td>{{medicalBackground.medicalBackgroundTypeLabel}}</td>
+                  <td>{{medicalBackground.background}}</td>
+                  <td>{{medicalBackground.period}}</td>
+                  <td>{{medicalBackground.treatment}}</td>
+                  <td>{{medicalBackground.remarks}}</td>
+                  <td>
+                    <p-badge
+                      [value]="medicalBackground.confidential ? 'Oui' : 'Non'"
+                      [severity]="medicalBackground.confidential ? 'warning' : 'success'"
+                    ></p-badge>
+                  </td>
+                  <td>
+                    <button
+                      pButton
+                      pRipple
+                      type="button"
+                      icon="fas fa-trash"
+                      class="p-button-rounded p-button-text p-button-danger"
+                      (click)="deleteMedicalBackground(medicalBackground)"
+                    ></button>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</p-card>

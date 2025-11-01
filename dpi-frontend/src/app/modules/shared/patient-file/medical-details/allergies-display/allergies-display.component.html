@@ -1,0 +1,65 @@
+<div class="flex justify-content-end">
+  <button
+    (click)="newAllergy()"
+    class="p-button-success auto-width"
+    icon="fas fa-plus"
+    label="Nouvelle prise"
+    pButton
+  >
+  </button>
+</div>
+<p-divider></p-divider>
+<div class="sm:col-12 md:col-12 lg:col-12 xl:col-12">
+  <p-table
+    [value]="allergies"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    styleClass="p-datatable-striped p-datatable-gridlines"
+    responsiveLayout="scroll"
+    selectionMode="single"
+    dataKey="id"
+    [(selection)]="selectedAllergy"
+    currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} lignes"
+    [rowsPerPageOptions]="[5,10,25,50]"
+    (onRowSelect)="onAllergySelect($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Type</th>
+        <th>Allergie</th>
+        <th>Remarques</th>
+        <th>Confidentiel</th>
+        <th><i class="fas fa-cogs"></i></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-allergy>
+      <tr [pSelectableRow]="allergy">
+        <td>{{allergy.allergyTypeLabel}}</td>
+        <td>{{allergy.allergy}}</td>
+        <td>{{allergy.remarks}}</td>
+        <td>
+          <p-badge [value]="allergy.confidential ? 'Oui' : 'Non'" [severity]="allergy.confidential ? 'warning' : 'success'"></p-badge>
+        </td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="fas fa-edit"
+            class="p-button-rounded p-button-text mr-2"
+            (click)="edit(allergy)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="fas fa-trash"
+            class="p-button-rounded p-button-text p-button-danger"
+            (click)="delete(allergy.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

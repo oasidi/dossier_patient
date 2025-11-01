@@ -1,0 +1,56 @@
+<div class="mt-2">
+  <p-card header="Dossier medical">
+    <p-tabView (onChange)="tabChange($event)">
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="fas fa-weight"></i>
+          <span>&nbsp;Constantes</span>
+        </ng-template>
+        <app-constants-display
+          [constants]="constants"
+          [patientId]="patientId"
+        ></app-constants-display>
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="fas fa-allergies"></i>
+          <span>&nbsp;Allergies</span>
+        </ng-template>
+        <app-allergies-display
+          [allergies]="allergies"
+          [patientId]="patientId"
+        ></app-allergies-display>
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="fas fa-bacteria"></i>
+          <span>Antecedents</span>
+        </ng-template>
+        <app-medical-backgrounds-display
+          [medicalBackgrounds]="medicalBackgrounds"
+          [patientId]="patientId"
+        ></app-medical-backgrounds-display>
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="fas fa-calendar-day"></i>
+          <span>&nbsp;Rendez-vous</span>
+        </ng-template>
+        <app-medical-appointments-display
+          [medicalAppointments]="medicalAppointments"
+          [patientId]="patientId"
+        ></app-medical-appointments-display>
+      </p-tabPanel>
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+          <i class="fas fa-briefcase-medical"></i>
+          <span>&nbsp;Cas medicaux</span>
+        </ng-template>
+        <app-medical-cases-display
+          [patientId]="patientId"
+          [medicalCases]="medicalCases"
+        ></app-medical-cases-display>
+      </p-tabPanel>
+    </p-tabView>
+  </p-card>
+</div>

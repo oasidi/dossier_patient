@@ -1,0 +1,71 @@
+<p-card header="Details de la consultation">
+  <ng-container>
+    <div class="flex flex-row justify-content-end" *ngIf="consultation.id && consultation.status === 'STAND_BY'">
+      <button
+        (click)="restoreConsultation()"
+        pButton
+        icon="fas fa-times"
+        label="Annuler"
+        class="text-left auto-width p-button-danger"
+      ></button>
+    </div>
+    <div class="flex flex-row justify-content-end" *ngIf="consultation.id && consultation.status === 'IN_PROGRESS'">
+      <button
+        (click)="closeConsultation()"
+        pButton
+        icon="fas fa-lock"
+        label="Clôturer la consultation"
+        class="text-left auto-width p-button-warning"
+      ></button>
+    </div>
+    <p-divider></p-divider>
+  </ng-container>
+  <p-tabView>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <i class="fas fa-user"></i>
+        <span>&nbsp;Patient</span>
+      </ng-template>
+      <app-patient-file></app-patient-file>
+    </p-tabPanel>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <i class="fas fa-diagnoses"></i>
+        <span>&nbsp;Consultation</span>
+      </ng-template>
+      <p-tabView>
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <i class="fas fa-notes-medical"></i>
+            <span>&nbsp;Détails de la consultation</span>
+          </ng-template>
+
+          <app-consultation-information
+          [consultation]="consultation"
+          ></app-consultation-information>
+        </p-tabPanel>
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <i class="fas fa-file-prescription"></i>
+            <span>&nbsp;Pharmacie</span>
+          </ng-template>
+          <app-pharmacy-prescription></app-pharmacy-prescription>
+        </p-tabPanel>
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <i class="fas fa-vials"></i>
+            <span>&nbsp;Laboratoire</span>
+          </ng-template>
+          <app-laboratory-prescription></app-laboratory-prescription>
+        </p-tabPanel>
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <i class="fas fa-x-ray"></i>
+            <span>&nbsp;Imagerie</span>
+          </ng-template>
+          <app-imagery-prescription></app-imagery-prescription>
+        </p-tabPanel>
+      </p-tabView>
+    </p-tabPanel>
+  </p-tabView>
+</p-card>

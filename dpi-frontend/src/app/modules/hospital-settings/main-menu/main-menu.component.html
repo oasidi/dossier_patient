@@ -1,0 +1,16 @@
+<div class="p-fluid grid">
+  <div class="col-12">
+    <p-card>
+      <div class="flex justify-content-end">
+      </div>
+    </p-card>
+  </div>
+  <div class="col-2">
+    <p-card [styleClass]="'full-height'">
+      <p-megaMenu [model]="menuItems"></p-megaMenu>
+    </p-card>
+  </div>
+  <div class="col-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>

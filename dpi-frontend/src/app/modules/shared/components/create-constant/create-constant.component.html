@@ -1,0 +1,32 @@
+<div class="flex justify-content-between flex-wrap">
+  <div *ngFor="let cons of constants" class="col-6">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">{{cons.constantTypeLabel}}</span>
+      <input
+        [(ngModel)]="cons.value"
+        [placeholder]="cons.constantTypeLabel"
+        pInputText
+        type="text"
+      >
+      <span class="p-inputgroup-addon tail">{{cons.constantTypeUnit}}</span>
+    </div>
+  </div>
+</div>
+<div class="col-12 flex justify-content-end">
+  <button
+    (click)="onCancel()"
+    class="p-button-danger auto-width mr-2"
+    icon="fas fa-times"
+    label="Annuler"
+    pButton
+  >
+  </button>
+  <button
+    (click)="onSave()"
+    class="auto-width"
+    icon="fas fa-save"
+    label="Enregistrer"
+    pButton
+  >
+  </button>
+</div>

@@ -1,0 +1,175 @@
+<p-card header="Informations civile">
+  <div class="flex flex-row-reverse flex-wrap">
+    <button
+      (click)="nextPage()"
+      class="auto-width"
+      icon="pi pi-angle-right"
+      iconPos="right"
+      label="Suivant"
+      pButton
+      pRipple
+      type="button"
+    ></button>
+  </div>
+  <div class="bordered-container p-2 mt-2">
+    <div class="p-fluid grid">
+      <div class="field col-12">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+              <i class="pi pi-qrcode"></i>
+          </span>
+          <span class="p-float-label">
+              <input
+                [(ngModel)]="patient.nationalId"
+                [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('nationalId')}"
+                id="nationalId"
+                pInputText
+                type="text"
+              >
+              <label for="nationalId">NNI</label>
+            </span>
+        </div>
+        <small *ngIf="errorKeys.includes('nationalId')" class="p-error">{{errorMessages['nationalId']}}</small>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+          <input
+            [(ngModel)]="patient.firstName"
+            [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('firstName')}"
+            id="firstname"
+            pInputText
+            type="text"
+          >
+          <label for="firstname">Prenom</label>
+        </span>
+        </div>
+        <small *ngIf="errorKeys.includes('firstname')" class="p-error">{{errorMessages['firstName']}}</small>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+          <input
+            [(ngModel)]="patient.middleName"
+            [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('middlename')}"
+            id="middlename"
+            pInputText
+            type="text"
+          >
+          <label for="middlename">Prenom du pere</label>
+        </span>
+        </div>
+        <small *ngIf="errorKeys.includes('middlename')" class="p-error">{{errorMessages['middlename']}}</small>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+          <input
+            [(ngModel)]="patient.lastname"
+            [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('lastname')}"
+            id="lastname"
+            pInputText
+            type="text"
+          >
+          <label for="lastname">Nom de famille</label>
+        </span>
+        </div>
+        <small *ngIf="errorKeys.includes('lastname')" class="p-error">{{errorMessages['lastname']}}</small>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-calendar"></i>
+        </span>
+          <span class="p-float-label">
+          <p-calendar
+            [(ngModel)]="patient.birthdate"
+            [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('birthdate')}"
+            id="birthdate"
+          ></p-calendar>
+          <label for="birthdate">Date de naissance</label>
+        </span>
+        </div>
+        <small *ngIf="errorKeys.includes('birthdate')" class="p-error">{{errorMessages['birthdate']}}</small>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-map-marker"></i>
+        </span>
+          <span class="p-float-label">
+          <input
+            [(ngModel)]="patient.birthPlace"
+            [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('birthPlace')}"
+            id="birthPlace"
+            pInputText
+            type="text"
+          >
+          <label for="birthPlace">Lieu de naissance</label>
+        </span>
+        </div>
+        <small *ngIf="errorKeys.includes('birthPlace')" class="p-error">{{errorMessages['birthPlace']}}</small>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <p-dropdown
+            [(ngModel)]="patient.sexe"
+            [autoDisplayFirst]="true"
+            [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('sexe')}"
+            [options]="sexe"
+            id="sexe"
+            optionLabel="displayName"
+            optionValue="value"
+          ></p-dropdown>
+          <label for="sexe">Sexe</label>
+        </span>
+        <small *ngIf="errorKeys.includes('sexe')" class="p-error">{{errorMessages['sexe']}}</small>
+      </div>
+      <div class="field col-12 lg:col-6 md:col-4">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+              <i class="pi pi-phone"></i>
+          </span>
+          <span class="p-float-label">
+              <input
+                [(ngModel)]="patient.phoneNumber"
+                [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('phoneNumber')}"
+                id="phonenumber"
+                pInputText
+                type="text"
+              >
+              <label for="phonenumber">Numero de telephone</label>
+          </span>
+        </div>
+        <small *ngIf="errorKeys.includes('lastname')" class="p-error">{{errorMessages['phoneNumber']}}</small>
+      </div>
+      <div class="field col-12 lg:col-6 md:col-4">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+              <i class="pi pi-globe"></i>
+          </span>
+          <span class="p-float-label">
+              <input
+                [(ngModel)]="patient.email"
+                [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('email')}"
+                id="email"
+                pInputText
+                type="text"
+              >
+              <label for="email">Email</label>
+          </span>
+        </div>
+        <small *ngIf="errorKeys.includes('lastname')" class="p-error">{{errorMessages['email']}}</small>
+      </div>
+    </div>
+  </div>
+</p-card>

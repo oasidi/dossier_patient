@@ -1,0 +1,67 @@
+<div class="p-fluid mt-2">
+  <div class="col-12">
+    <div class="field col-12">
+      <span class="p-float-label">
+          <p-dropdown
+            [(ngModel)]="selectedAllergyType"
+            [autoDisplayFirst]="false"
+            [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('allergyTypeId')}"
+            [options]="allergyTypes"
+            id="allergyType"
+            optionLabel="allergyName"
+          ></p-dropdown>
+          <label for="allergyType">Type d'allergie</label>
+      </span>
+      <small *ngIf="errorKeys.includes('allergyTypeId')" class="p-error">{{errorMessages['allergyTypeId']}}</small>
+    </div>
+    <div class="field col-12">
+      <span class="p-float-label">
+          <input
+            [(ngModel)]="allergy.allergy"
+            [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('allergy')}"
+            id="allergy"
+            pInputText
+            type="text"
+          >
+          <label for="allergy">Allergie</label>
+      </span>
+      <small *ngIf="errorKeys.includes('allergy')" class="p-error">{{errorMessages['allergy']}}</small>
+    </div>
+    <div class="field col-12">
+            <span class="p-float-label">
+              <textarea
+                [(ngModel)]="allergy.remarks"
+                id="remarks"
+                pInputTextarea
+                rows="3"
+              ></textarea>
+                <label for="remarks">Remarques</label>
+            </span>
+    </div>
+    <div class="field col-12">
+      <h5>Confidentiel</h5>
+      <p-inputSwitch
+        [(ngModel)]="allergy.confidential"
+      ></p-inputSwitch>
+    </div>
+    <p-divider></p-divider>
+    <div class="col-12 flex justify-content-end">
+      <button
+        (click)="onCancel()"
+        class="auto-width p-button-danger mr-2"
+        icon="fas fa-times"
+        label="Annuler"
+        pButton
+      >
+      </button>
+      <button
+        (click)="onSave()"
+        class="auto-width"
+        icon="fas fa-save"
+        label="Enregistrer"
+        pButton
+      >
+      </button>
+    </div>
+  </div>
+</div>

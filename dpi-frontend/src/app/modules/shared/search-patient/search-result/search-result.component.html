@@ -1,0 +1,54 @@
+<div class="mt-2">
+  <p-card header="Resultat de la recherche">
+    <div class="flex flex-row-reverse flex-wrap mb-2">
+      <button
+        pButton
+        pRipple
+        icon="pi pi-user-plus"
+        type="button"
+        label="Nouveau patient"
+        class=" p-button-success auto-width"
+        (click)="createPatient()"
+      ></button>
+    </div>
+    <div>
+      <p-table
+        [value]="patients"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        styleClass="p-datatable-striped p-datatable-gridlines"
+        responsiveLayout="scroll"
+        selectionMode="single"
+        dataKey="id"
+        [(selection)]="selectedPatient"
+        currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} lignes"
+        [rowsPerPageOptions]="[10,25,50]"
+        (onRowSelect)="onPatientSelect()"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>NNI</th>
+            <th>Prenom</th>
+            <th>Prenom du pere</th>
+            <th>Nom de famille</th>
+            <th>Numero de telephone</th>
+            <th>Date de naissance</th>
+            <th>Sexe</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-patient>
+          <tr [pSelectableRow]="patient">
+            <td>{{patient.nationalId}}</td>
+            <td>{{patient.firstName}}</td>
+            <td>{{patient.middleName}}</td>
+            <td>{{patient.lastname}}</td>
+            <td>{{patient.phoneNumber}}</td>
+            <td>{{patient.birthdate | date:'dd/MM/yyyy'}}</td>
+            <td>{{patient.sexe}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-card>
+</div>

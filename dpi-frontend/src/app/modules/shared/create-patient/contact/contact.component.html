@@ -1,0 +1,80 @@
+<p-card header="Informations de contact">
+  <div class="flex justify-content-between flex-wrap">
+    <button
+      (click)="prevPage()"
+      class="auto-width"
+      icon="pi pi-angle-left"
+      iconPos="left"
+      label="Precedent"
+      pButton
+      pRipple
+      type="button"
+    ></button>
+    <button
+      (click)="nextPage()"
+      class="auto-width"
+      icon="pi pi-angle-right"
+      iconPos="right"
+      label="Suivant"
+      pButton
+      pRipple
+      type="button"
+    ></button>
+  </div>
+  <div class="bordered-container p-2 pt-4 mt-2">
+    <div class="p-fluid grid">
+      <div class="field col-12 lg:col-12 md:col-4">
+        <h3>Personne de contant</h3>
+        <p-divider></p-divider>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="contactPerson.firstname"
+              id="firstname"
+              pInputText
+              type="text"
+            >
+            <label for="firstname">Prenom</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="contactPerson.lastname"
+              id="lastname"
+              pInputText
+              type="text"
+            >
+            <label for="lastname">Nom de famille</label>
+        </span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-4">
+        <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+            <i class="pi pi-phone"></i>
+        </span>
+          <span class="p-float-label">
+            <input
+              [(ngModel)]="contactPerson.phoneNumber"
+              id="contactPersonPhoneNumber"
+              pInputText
+              type="text"
+            >
+            <label for="contactPersonPhoneNumber">Numero de telephone</label>
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-card>

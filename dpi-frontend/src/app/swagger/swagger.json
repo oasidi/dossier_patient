@@ -1,0 +1,2463 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Swagger Api documentation",
+    "version" : "0.0.1-SNAPSHOT",
+    "title" : "Swagger Api Documentation",
+    "contact" : {
+      "name" : "SysInfoMed",
+      "url" : "https://www.sysinfomed.com",
+      "email" : "support@sysinfomed.com"
+    }
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "Address"
+  }, {
+    "name" : "Allergies"
+  }, {
+    "name" : "Allergy types"
+  }, {
+    "name" : "Appointment"
+  }, {
+    "name" : "Booking"
+  }, {
+    "name" : "Constants"
+  }, {
+    "name" : "Constants types"
+  }, {
+    "name" : "Consultation"
+  }, {
+    "name" : "Contact-Person"
+  }, {
+    "name" : "hospital"
+  }, {
+    "name" : "Medical background types"
+  }, {
+    "name" : "Medical backgrounds"
+  }, {
+    "name" : "Medical cases"
+  }, {
+    "name" : "medical cases types"
+  }, {
+    "name" : "medical service"
+  }, {
+    "name" : "Medication"
+  }, {
+    "name" : "Patient"
+  }, {
+    "name" : "Preferences cases"
+  } ],
+  "paths" : {
+    "/api/v1/address/" : {
+      "post" : {
+        "tags" : [ "Address" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AddressDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/patient/{patientId}" : {
+      "get" : {
+        "tags" : [ "Address" ],
+        "operationId" : "findByPatientId",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AddressDto"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}" : {
+      "get" : {
+        "tags" : [ "Address" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "addressId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AddressDto"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{patientId}" : {
+      "delete" : {
+        "tags" : [ "Address" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/allergies/" : {
+      "post" : {
+        "tags" : [ "Allergies" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AllergyDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/allergies/patient/{patientId}" : {
+      "get" : {
+        "tags" : [ "Allergies" ],
+        "operationId" : "findAllByPatient",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/AllergyDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/allergies/{allergyId}" : {
+      "get" : {
+        "tags" : [ "Allergies" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "allergyId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AllergyDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Allergies" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "allergyId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/allergy-types/" : {
+      "get" : {
+        "tags" : [ "Allergy types" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/AllergyTypeDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Allergy types" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AllergyTypeDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/allergy-types/{allergyTypeId}" : {
+      "get" : {
+        "tags" : [ "Allergy types" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "allergyTypeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AllergyTypeDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Allergy types" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "allergyTypeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appointments/" : {
+      "get" : {
+        "tags" : [ "Appointment" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/AppointmentDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Appointment" ],
+        "operationId" : "create",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AppointmentDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Appointment" ],
+        "operationId" : "update",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AppointmentDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appointments/patient/{patientId}" : {
+      "get" : {
+        "tags" : [ "Appointment" ],
+        "operationId" : "findAllPatientAppointments",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/AppointmentRepresentation"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appointments/{id}" : {
+      "get" : {
+        "tags" : [ "Appointment" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AppointmentDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Appointment" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/api/v1/bookings/" : {
+      "get" : {
+        "tags" : [ "Booking" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/BookingDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Booking" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/BookingDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/bookings/appointments" : {
+      "get" : {
+        "tags" : [ "Booking" ],
+        "operationId" : "getTodayServiceAppointments",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/DetailedPatientAppointment"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/bookings/check" : {
+      "post" : {
+        "tags" : [ "Booking" ],
+        "operationId" : "checkAppointment",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/CheckBookingPostDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/TimeSlotDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/bookings/{date}" : {
+      "get" : {
+        "tags" : [ "Booking" ],
+        "operationId" : "findByDate",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "format" : "date"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/BookingDto"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/bookings/{date}/slots" : {
+      "get" : {
+        "tags" : [ "Booking" ],
+        "operationId" : "availableSlots",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "format" : "date-time"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/TimeSlotDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/bookings/{id}" : {
+      "get" : {
+        "tags" : [ "Booking" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/BookingDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Booking" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/api/v1/constant-types/" : {
+      "get" : {
+        "tags" : [ "Constants types" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ConstantTypeDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Constants types" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ConstantTypeDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/constant-types/{constantTypeId}" : {
+      "get" : {
+        "tags" : [ "Constants types" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "constantTypeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ConstantTypeDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Constants types" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "constantTypeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/constants/" : {
+      "post" : {
+        "tags" : [ "Constants" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ConstantDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/constants/patient/{patientId}" : {
+      "get" : {
+        "tags" : [ "Constants" ],
+        "operationId" : "findAllByPatient",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ConstantDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/constants/{constantId}" : {
+      "get" : {
+        "tags" : [ "Constants" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "constantId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ConstantDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Constants" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "constantId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultations/" : {
+      "get" : {
+        "tags" : [ "Consultation" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ConsultationDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Consultation" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ConsultationDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultations/by/doctor/{doctorId}" : {
+      "get" : {
+        "tags" : [ "Consultation" ],
+        "operationId" : "findAllByDoctorId",
+        "parameters" : [ {
+          "name" : "doctorId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ConsultationDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultations/by/patient/{patientId}" : {
+      "get" : {
+        "tags" : [ "Consultation" ],
+        "operationId" : "findAllByPatientId",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ConsultationDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultations/by/service/{serviceId}" : {
+      "get" : {
+        "tags" : [ "Consultation" ],
+        "operationId" : "findAllByService",
+        "parameters" : [ {
+          "name" : "serviceId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ConsultationDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultations/update/status" : {
+      "patch" : {
+        "tags" : [ "Consultation" ],
+        "operationId" : "changeConsultationStatus",
+        "parameters" : [ {
+          "name" : "status",
+          "in" : "query",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "STAND_BY", "OPEN", "IN_PROGRESS", "CLOSED" ]
+        }, {
+          "name" : "appointmentId",
+          "in" : "query",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "consultationId",
+          "in" : "query",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultations/{consultationId}" : {
+      "get" : {
+        "tags" : [ "Consultation" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "consultationId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ConsultationDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Consultation" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "consultationId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/api/v1/contact-person/" : {
+      "post" : {
+        "tags" : [ "Contact-Person" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ContactPersonDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/contact-person/{contactPersonId}" : {
+      "get" : {
+        "tags" : [ "Contact-Person" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "contactPersonId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ContactPersonDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Contact-Person" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "contactPersonId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/hospitals/" : {
+      "get" : {
+        "tags" : [ "hospital" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/HospitalDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "hospital" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/HospitalDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/hospitals/information" : {
+      "get" : {
+        "tags" : [ "hospital" ],
+        "operationId" : "getHospitalInformation",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/HospitalDto"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/hospitals/{hospitalId}" : {
+      "get" : {
+        "tags" : [ "hospital" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "hospitalId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/HospitalDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "hospital" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "hospitalId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-background-types/" : {
+      "get" : {
+        "tags" : [ "Medical background types" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MedicalBackgroundTypeDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Medical background types" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MedicalBackgroundTypeDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-background-types/{medicalBackgroundTypeId}" : {
+      "get" : {
+        "tags" : [ "Medical background types" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "medicalBackgroundTypeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MedicalBackgroundTypeDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Medical background types" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "medicalBackgroundTypeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-backgrounds/" : {
+      "post" : {
+        "tags" : [ "Medical backgrounds" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MedicalBackgroundDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-backgrounds/patient/{patientId}" : {
+      "get" : {
+        "tags" : [ "Medical backgrounds" ],
+        "operationId" : "findAllByPatientId",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MedicalBackgroundDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-backgrounds/{medicalBackgroundId}" : {
+      "get" : {
+        "tags" : [ "Medical backgrounds" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "medicalBackgroundId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MedicalBackgroundDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Medical backgrounds" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "medicalBackgroundId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-case-types/" : {
+      "get" : {
+        "tags" : [ "medical cases types" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MedicalCaseTypeDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "medical cases types" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MedicalCaseTypeDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-case-types/{medicalCaseTypeId}" : {
+      "get" : {
+        "tags" : [ "medical cases types" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "medicalCaseTypeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MedicalCaseTypeDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "medical cases types" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "medicalCaseTypeId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-cases/" : {
+      "post" : {
+        "tags" : [ "Medical cases" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MedicalCaseDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-cases/patient/{patientId}" : {
+      "get" : {
+        "tags" : [ "Medical cases" ],
+        "operationId" : "findAllByPatient",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MedicalCaseDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-cases/{caseId}" : {
+      "get" : {
+        "tags" : [ "Medical cases" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "caseId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MedicalCaseDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Medical cases" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "caseId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-services/" : {
+      "get" : {
+        "tags" : [ "medical service" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MedicalServiceDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "medical service" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MedicalServiceDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medical-services/{medicalServiceId}" : {
+      "get" : {
+        "tags" : [ "medical service" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "medicalServiceId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MedicalServiceDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "medical service" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "medicalServiceId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medications/" : {
+      "get" : {
+        "tags" : [ "Medication" ],
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MedicationDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Medication" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MedicationDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medications/{medicationId}" : {
+      "get" : {
+        "tags" : [ "Medication" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "medicationId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MedicationDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Medication" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "medicationId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/patients/" : {
+      "get" : {
+        "tags" : [ "Patient" ],
+        "summary" : "Get the list of all the patients",
+        "description" : "",
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/LightPatientDto"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Patient" ],
+        "summary" : "Create / update a new patient",
+        "description" : "",
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/LightPatientDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/patients/light/{patientId}" : {
+      "get" : {
+        "tags" : [ "Patient" ],
+        "summary" : "Find light patient representation by ID",
+        "description" : "",
+        "operationId" : "findLightPatientById",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/LightPatientDto"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/patients/search" : {
+      "post" : {
+        "tags" : [ "Patient" ],
+        "summary" : "Search light patients representation by search criteria",
+        "description" : "",
+        "operationId" : "searchPatients",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/PatientSearchCriteria"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/LightPatientDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/patients/{patientId}" : {
+      "delete" : {
+        "tags" : [ "Patient" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/preferences/" : {
+      "post" : {
+        "tags" : [ "Preferences cases" ],
+        "operationId" : "save",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/PreferenceDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/preferences/patient/{patientId}" : {
+      "get" : {
+        "tags" : [ "Preferences cases" ],
+        "operationId" : "findAllByPatient",
+        "parameters" : [ {
+          "name" : "patientId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/PreferenceDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/preferences/{preferenceId}" : {
+      "get" : {
+        "tags" : [ "Preferences cases" ],
+        "operationId" : "findById",
+        "parameters" : [ {
+          "name" : "preferenceId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/PreferenceDto"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Preferences cases" ],
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "preferenceId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "AddressDto" : {
+      "type" : "object",
+      "required" : [ "street" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "street" : {
+          "type" : "string"
+        },
+        "houseNumber" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        },
+        "postalCode" : {
+          "type" : "string"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "AllergyDto" : {
+      "type" : "object",
+      "required" : [ "allergy", "allergyTypeId" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "allergy" : {
+          "type" : "string"
+        },
+        "remarks" : {
+          "type" : "string"
+        },
+        "confidential" : {
+          "type" : "boolean"
+        },
+        "allergyTypeId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "allergyTypeLabel" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "AllergyTypeDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "allergyName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AppointmentDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "personnelId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "consultationId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "medicalCaseId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "bookingId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "startTime" : {
+          "$ref" : "#/definitions/LocalTime"
+        },
+        "endTime" : {
+          "$ref" : "#/definitions/LocalTime"
+        }
+      }
+    },
+    "AppointmentRepresentation" : {
+      "type" : "object",
+      "properties" : {
+        "bookingDate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "appointmentDetails" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DetailedPatientAppointment"
+          }
+        }
+      }
+    },
+    "BookingDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "serviceId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "bookingDate" : {
+          "type" : "string",
+          "format" : "date"
+        }
+      }
+    },
+    "CheckBookingPostDto" : {
+      "type" : "object",
+      "required" : [ "date", "patientId", "serviceId" ],
+      "properties" : {
+        "serviceId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 1
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 1
+        },
+        "date" : {
+          "type" : "string",
+          "format" : "date"
+        }
+      }
+    },
+    "ConstantDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "value" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "constantTypeId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "constantTypeLabel" : {
+          "type" : "string"
+        },
+        "constantTypeUnit" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "ConstantTypeDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "constantName" : {
+          "type" : "string"
+        },
+        "constantUnit" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ConsultationDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "anamnesis" : {
+          "type" : "string"
+        },
+        "physicalExamination" : {
+          "type" : "string"
+        },
+        "complementaryExamination" : {
+          "type" : "string"
+        },
+        "differentialDiagnosis" : {
+          "type" : "string"
+        },
+        "proposition" : {
+          "type" : "string"
+        },
+        "furtherConsultation" : {
+          "type" : "string"
+        },
+        "appointmentId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "STAND_BY", "OPEN", "IN_PROGRESS", "CLOSED" ]
+        }
+      }
+    },
+    "ContactPersonDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "firstname" : {
+          "type" : "string"
+        },
+        "lastname" : {
+          "type" : "string"
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "DetailedPatientAppointment" : {
+      "type" : "object",
+      "properties" : {
+        "appointmentId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "medicalCaseTitle" : {
+          "type" : "string"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "patientFirstname" : {
+          "type" : "string"
+        },
+        "patientLastname" : {
+          "type" : "string"
+        },
+        "sexe" : {
+          "type" : "string",
+          "enum" : [ "MALE", "FEMALE" ]
+        },
+        "medicalServiceName" : {
+          "type" : "string"
+        },
+        "startTime" : {
+          "$ref" : "#/definitions/LocalTime"
+        },
+        "endTime" : {
+          "$ref" : "#/definitions/LocalTime"
+        }
+      }
+    },
+    "GeoLocation" : {
+      "type" : "object",
+      "properties" : {
+        "latitude" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "longitude" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "HospitalDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "PRIVATE", "PUBLIC" ]
+        },
+        "logo" : {
+          "type" : "string"
+        },
+        "dashboardPhoto" : {
+          "type" : "string"
+        },
+        "directorName" : {
+          "type" : "string"
+        },
+        "locality" : {
+          "type" : "string"
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        },
+        "webSiteUrl" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "location" : {
+          "$ref" : "#/definitions/GeoLocation"
+        }
+      }
+    },
+    "LightPatientDto" : {
+      "type" : "object",
+      "required" : [ "birthdate", "firstName", "lastname", "nationalId", "phoneNumber" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nationalId" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "middleName" : {
+          "type" : "string"
+        },
+        "lastname" : {
+          "type" : "string"
+        },
+        "birthdate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "birthPlace" : {
+          "type" : "string"
+        },
+        "sexe" : {
+          "type" : "string",
+          "enum" : [ "MALE", "FEMALE" ]
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "maritalStatus" : {
+          "type" : "string",
+          "enum" : [ "SINGLE", "MARRIED", "DIVORCED", "WIDOWER" ]
+        },
+        "bloodGroup" : {
+          "type" : "string"
+        },
+        "rhesus" : {
+          "type" : "string"
+        },
+        "dateOfDeath" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "date" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "LocalTime" : {
+      "type" : "object",
+      "properties" : {
+        "hour" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "minute" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "second" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nano" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "MedicalBackgroundDto" : {
+      "type" : "object",
+      "required" : [ "medicalBackgroundTypeId", "patientId" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "background" : {
+          "type" : "string"
+        },
+        "confidential" : {
+          "type" : "boolean"
+        },
+        "period" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "treatment" : {
+          "type" : "string"
+        },
+        "remarks" : {
+          "type" : "string"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "medicalBackgroundTypeId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "medicalBackgroundTypeLabel" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "MedicalBackgroundTypeDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "backgroundName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "MedicalCaseDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "comment" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "OPEN" ]
+        },
+        "medicalCaseTypeId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "medicalCaseTypeTitle" : {
+          "type" : "string"
+        },
+        "medicalCaseTypeDescription" : {
+          "type" : "string"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "date" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "MedicalCaseTypeDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "MedicalServiceDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "director" : {
+          "type" : "string"
+        },
+        "logo" : {
+          "type" : "string"
+        },
+        "billable" : {
+          "type" : "boolean"
+        },
+        "location" : {
+          "$ref" : "#/definitions/GeoLocation"
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        },
+        "canHospitalize" : {
+          "type" : "boolean"
+        },
+        "active" : {
+          "type" : "boolean"
+        },
+        "hospitalId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "date" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "MedicationDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "number"
+        }
+      }
+    },
+    "PatientSearchCriteria" : {
+      "type" : "object",
+      "properties" : {
+        "nationalId" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "middleName" : {
+          "type" : "string"
+        },
+        "lastname" : {
+          "type" : "string"
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        },
+        "birthdate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "sexe" : {
+          "type" : "string",
+          "enum" : [ "MALE", "FEMALE" ]
+        }
+      }
+    },
+    "PreferenceDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "date" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "TimeSlotDto" : {
+      "type" : "object",
+      "properties" : {
+        "appointmentId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "patientId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "start" : {
+          "$ref" : "#/definitions/LocalTime"
+        },
+        "end" : {
+          "$ref" : "#/definitions/LocalTime"
+        },
+        "available" : {
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}

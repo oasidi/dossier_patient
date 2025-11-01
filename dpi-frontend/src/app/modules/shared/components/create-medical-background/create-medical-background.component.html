@@ -1,0 +1,87 @@
+<div class="p-fluid">
+  <div class="field col-12">
+    <span class="p-float-label">
+        <p-dropdown
+          [(ngModel)]="selectedMedicalBackgroundType"
+          [autoDisplayFirst]="false"
+          [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('medicalBackgroundTypeId')}"
+          [options]="medicalBackgroundTypes"
+          id="medicalBackgroundType"
+          optionLabel="backgroundName"
+        ></p-dropdown>
+        <label for="medicalBackgroundType">Type d'antecedent</label>
+    </span>
+    <small *ngIf="errorKeys.includes('medicalBackgroundTypeId')" class="p-error">{{errorMessages['medicalBackgroundTypeId']}}</small>
+  </div>
+  <div class="field col-12">
+    <span class="p-float-label">
+        <input
+          [(ngModel)]="medicalBackground.background"
+          [ngClass]="{'ng-invalid ng-dirty': errorKeys.includes('background')}"
+          id="medicalBackground"
+          pInputText
+          type="text"
+        >
+        <label for="medicalBackground">Antecedent</label>
+    </span>
+    <small *ngIf="errorKeys.includes('background')" class="p-error">{{errorMessages['background']}}</small>
+  </div>
+  <div class="field col-12">
+  <span class="p-float-label">
+    <input
+      [(ngModel)]="medicalBackground.period"
+      id="period"
+      pInputText
+      type="text"
+    >
+    <label for="period">Periode</label>
+  </span>
+  </div>
+  <div class="field col-12">
+  <span class="p-float-label">
+      <input
+        [(ngModel)]="medicalBackground.treatment"
+        id="treatment"
+        pInputText
+        type="text"
+      >
+      <label for="treatment">Traitement</label>
+  </span>
+  </div>
+  <div class="field col-12">
+  <span class="p-float-label">
+    <textarea
+      [(ngModel)]="medicalBackground.remarks"
+      id="medicalBackgroundRemarks"
+      pInputTextarea
+      rows="3"
+    ></textarea>
+      <label for="medicalBackgroundRemarks">Remarques</label>
+  </span>
+  </div>
+  <div class="field col-12">
+    <h5>Confidentiel</h5>
+    <p-inputSwitch
+      [(ngModel)]="medicalBackground.confidential"
+    ></p-inputSwitch>
+  </div>
+  <p-divider></p-divider>
+  <div class="col-12 flex justify-content-end">
+    <button
+      (click)="onCancel()"
+      class="auto-width p-button-danger mr-2"
+      icon="fas fa-times"
+      label="Annuler"
+      pButton
+    >
+    </button>
+    <button
+      (click)="onSave()"
+      class="auto-width"
+      icon="fas fa-save"
+      label="Enregistrer"
+      pButton
+    >
+    </button>
+  </div>
+</div>

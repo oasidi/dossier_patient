@@ -1,0 +1,60 @@
+<p-card header="Fiche patient">
+  <div class="p-fluid grid">
+    <div
+      class="col-2 md:col-2 flex align-items-center justify-content-center bordered-container">
+      <p-image
+        src="assets/profile_male.jpg"
+        alt="profile"
+        width="150"
+        [preview]="true"
+      ></p-image>
+    </div>
+    <p-divider layout="vertical"></p-divider>
+    <div class="col-8 md:col-4">
+      <div class="field grid">
+        <div class="col">
+          <h3 class="col-fixed m-0">
+            <i class="far fa-id-card"></i>&nbsp;{{patient?.nationalId}}
+          </h3>
+        </div>
+      </div>
+      <div class="field grid">
+        <div class="col">
+          <h3 class="col-fixed m-0">
+            <i class="pi pi-user"></i>&nbsp;{{getFullname()}}
+          </h3>
+        </div>
+      </div>
+      <div class="field grid" *ngIf="patient?.birthdate">
+        <div class="col">
+          <h3 class="col-fixed m-0">
+            <i class="pi pi-calendar"></i>&nbsp;{{patient?.birthdate | date:'dd/MM/yyyy'}}
+            &nbsp;
+            <i class="fas fa-globe-africa"></i>&nbsp;{{this.patient?.birthPlace}}
+          </h3>
+        </div>
+      </div>
+      <div class="field grid" *ngIf="this.patient?.sexe">
+        <div class="col">
+          <h3 class="col-fixed m-0">
+            <i class="fas fa-venus-mars"></i>&nbsp;{{this.patient?.sexe}}
+          </h3>
+        </div>
+      </div>
+      <div class="field grid" *ngIf="this.patient?.phoneNumber">
+        <div class="col">
+          <h3 class="col-fixed m-0">
+            <i class="fas fa-phone-alt"></i>&nbsp;{{this.patient?.phoneNumber}}
+          </h3>
+        </div>
+      </div>
+      <div class="field grid" *ngIf="this.patient?.email">
+        <div class="col">
+          <h3 class="col-fixed m-0">
+            <i class="fas fa-at"></i>&nbsp;{{this.patient?.email}}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-card>

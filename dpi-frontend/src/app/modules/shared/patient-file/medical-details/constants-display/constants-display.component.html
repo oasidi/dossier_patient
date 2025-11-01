@@ -1,0 +1,45 @@
+<div class="flex justify-content-end">
+  <button
+    pButton
+    icon="fas fa-plus"
+    label="Nouvelle prise"
+    class="p-button-success auto-width"
+    (click)="newConstant()"
+  >
+  </button>
+</div>
+<p-divider></p-divider>
+<div class="p-fluid grid">
+  <div class="sm:col-12 md:col-12 lg:col-4" style="min-height: 300px">
+    <p-chart type="line" [data]="constantsData" [options]="basicOptions"></p-chart>
+  </div>
+  <div class="sm:col-12 md:col-12 lg:col-8">
+    <p-table
+      [value]="constants"
+      [paginator]="true"
+      [rows]="8"
+      [showCurrentPageReport]="true"
+      styleClass="p-datatable-striped p-datatable-gridlines"
+      responsiveLayout="scroll"
+      selectionMode="single"
+      dataKey="id"
+      [(selection)]="selectedConstant"
+      currentPageReportTemplate="Affichage de {first} à {last} de {totalRecords} lignes"
+      [rowsPerPageOptions]="[8,16,24,32]"
+      (onRowSelect)="onConstantSelect($event)"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Constante</th>
+          <th>Valeur</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-constant>
+        <tr [pSelectableRow]="constant">
+          <td>{{constant.constantTypeLabel}}</td>
+          <td>{{constant.value + ' ' + constant.constantTypeUnit}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
